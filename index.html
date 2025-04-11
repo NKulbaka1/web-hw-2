@@ -1,13 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Finder</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Book Finder</h1>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search for books...">
+      <button id="search-btn">Search</button>
+    </div>
+    <div id="results" class="results"></div>
+    <div id="book-details" class="book-details hidden"></div>
+  </div>
+  <script src="./src/main.js" type="module"></script>
+</body>
 </html>
