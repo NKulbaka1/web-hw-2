@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultsDiv = document.getElementById('results');
   const bookDetailsDiv = document.getElementById('book-details');
 
-  // Поиск книг
   searchBtn.addEventListener('click', searchBooks);
   searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') searchBooks();
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resultsDiv.classList.add('hidden');
     bookDetailsDiv.classList.remove('hidden');
 
-    // Основная информация
     let detailsHTML = `
       <button class="back-btn" id="back-btn">Back to results</button>
       <h2>${book.title}</h2>
@@ -66,12 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
       ${book.publisher ? `<p><strong>Publisher(s):</strong> ${Array.isArray(book.publisher) ? book.publisher.join(', ') : book.publisher}</p>` : ''}
     `;
 
-    // Обложка книги
     if (book.cover_i) {
       detailsHTML += `<img src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg" alt="${book.title} cover" style="max-width: 200px; float: left; margin-right: 20px; margin-bottom: 20px;">`;
     }
 
-    // Получаем больше деталей через другой API запрос
     if (book.key) {
       try {
         const response = await fetch(`https://openlibrary.org${book.key}.json`);
@@ -94,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     bookDetailsDiv.innerHTML = detailsHTML;
 
-    // Обработчик кнопки "Назад"
     document.getElementById('back-btn').addEventListener('click', () => {
       resultsDiv.classList.remove('hidden');
       bookDetailsDiv.classList.add('hidden');
